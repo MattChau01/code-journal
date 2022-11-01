@@ -16,37 +16,67 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
-    <div>
+  <header class="container">
+    <div class="column-full">
       <h2>Code Journal</h2>
     </div>
   </header>
   <main>
-    <div data-view="entry-form">
-      <form>
-        <div>
-          <label>New Entry</label>
-          <div class="placeholder"></div>
-        </div>
-        <div>
-          <label for="title">Title</label>
-          <div>
-            <input type="text" id="title">
+    <div class="container-two">
+      <div data-view="entry-form">
+        <div class="row">
+          <div class="column-full">
+            <h1 class="content-label top">New Entry</h1>
           </div>
         </div>
-        <div>
-          <label for="url">Photo URL</label>
-          <div>
-            <input type="url">
+        <form>
+
+          <div class="row">
+            <div>
+              <div class="column-half">
+                <img class="placeholder" src="blank">
+              </div>
+            </div>
+            <div>
+              <div>
+                <div class="row">
+                  <div class="column-half">
+                    <h3 class="content-label rest column-half">Title</h3>
+                  </div>
+                  <input type="text" id="title" class="input-space">
+                </div>
+              </div>
+              <div>
+                <div class="row">
+                  <div class="column-half">
+                    <h3 class="content-label rest">Photo URL</h3>
+                  </div>
+                  <input type="url" class="input-space">
+                </div>
+              </div>
+            </div>
+
+
           </div>
-        </div>
-        <div>
-          <label for="notes">Notes</label>
           <div>
-            <textarea id="notes"></textarea>
+            <div>
+              <div class="row">
+                <div class="column-half">
+                  <h3 class="content-label rest">Notes</h3>
+                </div>
+                <textarea id="notes" class="entry-width"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="column-full">
+                <div class="row right">
+                  <button class="button">SAVE</button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>

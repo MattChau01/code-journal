@@ -2,9 +2,98 @@
   box-sizing: border-box;
 }
 
+.container {
+  display: flex;
+  align-items: flex-start;
+  background-color: #562b81;
+  margin-left: 0;
+}
+
+.container-two {
+  background-color: white;
+  margin-left: 10px;
+}
+
+.column-third,
+.column-half,
+.column-full {
+  padding: 0 0.5rem;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+}
+
 .placeholder {
   display: block;
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 350px;
   background: #eee;
+}
+
+header {
+  height: 50px;
+}
+
+h2 {
+  color: white;
+  font-family: "Proza Libre", sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0;
+  padding-top: 10px;
+}
+
+.content-label {
+  font-family: "Proza Libre", sans-serif;
+}
+
+.top {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.rest {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.button {
+  margin-top: 15px;
+  margin-right: 100px;
+  text-align: right;
+}
+
+.right {
+  justify-content: right;
+}
+
+.entry-width {
+  width: 85%;
+  margin-right: 50px;
+  margin-left: 20px;
+}
+
+.input-space {
+  margin-left: 20px;
+  width: 350px;
+}
+
+input:required {
+  border-color: #562b81;
+  border-width: 3px;
+}
+
+@media screen and (min-width: 500px) {
+  .column-half {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .column-third {
+    width: calc(100%/3);
+  }
 }
