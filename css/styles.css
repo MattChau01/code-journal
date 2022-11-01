@@ -10,7 +10,7 @@
 }
 
 .container-two {
-  background-color: white;
+  background-color: #edebed;
   margin-left: 10px;
 }
 
@@ -25,11 +25,9 @@
   display: flex;
 }
 
-.placeholder {
-  display: block;
-  height: 200px;
+img {
   width: 350px;
-  background: #eee;
+  height: 350px;
 }
 
 header {
@@ -63,7 +61,11 @@ h2 {
 .button {
   margin-top: 15px;
   margin-right: 100px;
+  margin-bottom: 45px;
   text-align: right;
+  background-color: #562b81;
+  border-radius: 5px;
+  color: white;
 }
 
 .right {
@@ -81,9 +83,10 @@ h2 {
   width: 350px;
 }
 
+textarea,
 input:required {
-  border-color: #562b81;
-  border-width: 3px;
+  border: 3px solid #562b81;
+  border-width: 2px;
 }
 
 @media screen and (min-width: 500px) {
