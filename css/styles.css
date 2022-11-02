@@ -89,6 +89,7 @@ textarea {
   width: 350px;
 }
 
+textarea:focus,
 input:focus {
   outline: 2px solid #562b81;
 }
