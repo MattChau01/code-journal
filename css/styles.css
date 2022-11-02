@@ -111,3 +111,19 @@ input:focus {
     margin-right: 125px;
   }
 }
+
+ul.no-bullets {
+  list-style-type: none;
+  margin-left: 15px;
+  padding: 0;
+}
+
+li {
+  margin: 10px;
+  font-size: 20px;
+}
+
+.li-header {
+  font-weight: 600;
+  font-size: 25px;
+}

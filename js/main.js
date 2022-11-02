@@ -2,11 +2,13 @@
 
 function newPhoto(event) {
   $img.src = ($input.value);
+  $imgView.src = ($input.value);
 }
 
 var $input = document.getElementById('url-link');
 $input.addEventListener('input', newPhoto);
 var $img = document.getElementById('photo');
+var $imgView = document.getElementById('photoView');
 
 function formSubmit(event) {
   event.preventDefault();
