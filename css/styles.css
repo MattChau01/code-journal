@@ -1,16 +1,19 @@
 * {
   box-sizing: border-box;
+  font-family: "Proza Libre", sans-serif;
 }
 
 .container {
   background-color: #562b81;
-  margin: 0;
+  margin-left: 0;
   padding: 0;
 }
 
 .container-two {
   background-color: #edebed;
-  margin-left: 10px;
+  margin-left: 0;
+  margin-bottom: 0;
+  height: 800px;
 }
 
 .column-eigth {
@@ -25,6 +28,7 @@ img {
   width: 350px;
   height: 350px;
   object-fit: cover;
+  margin-left: 10px;
 }
 
 header {
@@ -40,13 +44,10 @@ h2 {
   padding-top: 10px;
 }
 
-.content-label {
-  font-family: "Proza Libre", sans-serif;
-}
-
 .top {
   font-size: 30px;
   font-weight: 600;
+  margin-left: 10px;
 }
 
 .rest {
@@ -78,15 +79,18 @@ h2 {
   margin-left: 20px;
 }
 
+input,
+textarea {
+  font-family: "Proza Libre", sans-serif;
+}
+
 .input-space {
   margin-left: 20px;
   width: 350px;
 }
 
-textarea,
-input:required {
-  border: 3px solid #562b81;
-  border-width: 2px;
+input:focus {
+  outline: 2px solid #562b81;
 }
 
 @media screen and (min-width: 700px) {
