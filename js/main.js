@@ -19,7 +19,11 @@ function formSubmit(event) {
     submitUrl: urlLink,
     submitNotes: textNotes
   };
-  return object;
+  object.entryId = (data.nextEntryId);
+  data.nextEntryId++;
+  $img.setAttribute('src', '/images/placeholder-image-square.jpg');
+  $submit.reset();
+  data.entries.unshift(object);
 }
 
 var $submit = document.getElementById('submitForm');
