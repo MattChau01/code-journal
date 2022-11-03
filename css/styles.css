@@ -16,6 +16,14 @@
   height: 100%;
 }
 
+.column-fourth {
+  width: calc(100%/4);
+}
+
+.column-third {
+  width: calc(100%/3);
+}
+
 .column-half {
   width: calc(100%/2);
 }
@@ -161,4 +169,13 @@ p {
 
 li {
   margin: 20px;
+}
+
+.nav {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin-top: 15px;
+  font-size: 15px;
+  font-weight: 500;
 }

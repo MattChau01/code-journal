@@ -33,11 +33,7 @@ $submit.addEventListener('submit', switchToEntries);
 var $title = document.getElementById('title');
 var $notes = document.getElementById('notes');
 
-//
-//
 // View Swap
-//
-//
 
 function switchToEntries(event) {
 
