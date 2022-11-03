@@ -80,6 +80,7 @@ h2 {
   text-align: center;
   font-size: 17px;
   border: none;
+  cursor: pointer;
 }
 
 .right {
@@ -161,6 +162,7 @@ ul.no-bullets {
   font-size: 17px;
   margin-top: 15px;
   margin-left: 70%;
+  cursor: pointer;
 }
 
 p {
