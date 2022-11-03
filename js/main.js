@@ -44,7 +44,7 @@ function switchToEntries(event) {
   for (var j = 0; j < $tab.length; j++) {
     if ($tab[j].getAttribute('data-view') === 'entry-form') {
       $tab[j].classList.add('hidden');
-    } else if ($tab[j].getAttribute('data-view') !== 'entry-form') {
+    } else if ($tab[j].getAttribute('data-view') === 'entries') {
       $tab[j].classList.remove('hidden');
     }
   }
@@ -55,54 +55,52 @@ $entries.addEventListener('click', switchToEntries);
 
 var $tab = document.querySelectorAll('.view');
 
-//
-//
 // DOM TREE
-//
-//
 
-function newEntry(entries) {
-  var $list = document.createElement('li');
+document.addEventListener('DOMContentLoaded', function () {
 
-  var $div0 = document.createElement('div');
-  $div0.setAttribute('class', 'row');
-  $list.appendChild($div0);
+  function newEntry(entries) {
+    var $list = document.createElement('li');
 
-  var $div1 = document.createElement('div');
-  $div0.appendChild($div1);
+    var $div0 = document.createElement('div');
+    $div0.setAttribute('class', 'row');
+    $list.appendChild($div0);
 
-  var $div2 = document.createElement('div');
-  $div2.setAttribute('class', 'column-half');
-  $div1.appendChild($div2);
+    var $div1 = document.createElement('div');
+    $div0.appendChild($div1);
 
-  var $imgEntry = document.createElement('img');
-  $imgEntry.setAttribute('id', 'photoView');
-  $imgEntry.setAttribute('src', data.entries[i].submitUrl);
-  // image not loading
-  $imgEntry.setAttribute('alt', 'placeholder');
-  $div2.appendChild($imgEntry);
+    var $div2 = document.createElement('div');
+    $div2.setAttribute('class', 'column-half');
+    $div1.appendChild($div2);
 
-  var $div3 = document.createElement('div');
-  $div3.setAttribute('class', 'column-half');
-  $div0.appendChild($div3);
+    var $imgEntry = document.createElement('img');
+    $imgEntry.setAttribute('id', 'photoView');
+    $imgEntry.setAttribute('src', data.entries[i].submitUrl);
+    $imgEntry.setAttribute('alt', 'placeholder');
+    $div2.appendChild($imgEntry);
 
-  // Title
-  var $entryHeader = document.createElement('h1');
-  $entryHeader.setAttribute('class', 'entry-title');
-  $entryHeader.textContent = data.entries[i].submitTitle;
-  $div3.appendChild($entryHeader);
+    var $div3 = document.createElement('div');
+    $div3.setAttribute('class', 'column-half');
+    $div0.appendChild($div3);
 
-  // Notes
-  var $entryBody = document.createElement('p');
-  $entryBody.setAttribute('class', 'entry-body');
-  $entryBody.textContent = data.entries[i].submitNotes;
-  $div3.appendChild($entryBody);
+    var $entryHeader = document.createElement('h1');
+    $entryHeader.setAttribute('class', 'entry-title');
+    $entryHeader.textContent = data.entries[i].submitTitle;
+    $div3.appendChild($entryHeader);
 
-  return $list;
-}
+    var $entryBody = document.createElement('p');
+    $entryBody.setAttribute('class', 'entry-body');
+    $entryBody.textContent = data.entries[i].submitNotes;
+    $div3.appendChild($entryBody);
 
-var $tree = document.querySelector('.no-bullets');
-for (var i = 0; i < data.entries.length; i++) {
-  var addEntry = newEntry(data.entries[i]);
-  $tree.appendChild(addEntry);
-}
+    return $list;
+
+  }
+
+  var $tree = document.querySelector('.no-bullets');
+  for (var i = 0; i < data.entries.length; i++) {
+    var addEntry = newEntry(data.entries[i]);
+    $tree.appendChild(addEntry);
+  }
+
+});
