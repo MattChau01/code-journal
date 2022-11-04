@@ -67,9 +67,11 @@ $submit.addEventListener('submit', function (event) {
 
 function newEntry(entry) {
   var $list = document.createElement('li');
+  $list.setAttribute('class', 'view');
 
   var $div0 = document.createElement('div');
   $div0.setAttribute('class', 'row');
+  $div0.setAttribute('id', entry.entryId);
   $list.appendChild($div0);
 
   var $div1 = document.createElement('div');
@@ -109,6 +111,12 @@ function newEntry(entry) {
   $pencil.addEventListener('click', function () {
     switchView('entry-form');
   });
+  $pencil.addEventListener('click', function () {
+    data.editing = $div0.id;
+    $pencil.closest('#parent');
+    // console.log('entryId: ', $div0.id);
+  });
+
   return $list;
 
 }
@@ -129,7 +137,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Feature 3 notes
 
+// logs the cloest parent element
+
 var $parentUl = document.querySelector('.no-bullets');
 $parentUl.addEventListener('click', function () {
-  (event.target.closest('.no-bullets'));
+  // keep
+  event.target.closest('.no-bullets');
 });
