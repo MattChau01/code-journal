@@ -12,9 +12,9 @@ if (previousEntry !== null) {
   data = JSON.parse(previousEntry);
 }
 
-window.addEventListener('beforeunload', string);
-
 function string(event) {
   var $ipnutJSON = JSON.stringify(data);
   localStorage.setItem('journal-local-storage', $ipnutJSON);
 }
+
+window.addEventListener('beforeunload', string);
