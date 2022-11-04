@@ -26,20 +26,19 @@ function formSubmit(event) {
   data.entries.unshift(object);
   var $tree = document.querySelector('.no-bullets');
   $tree.prepend(newEntry(data.entries[0]));
+  switchView();
 }
 
 var $submit = document.getElementById('submitForm');
 $submit.addEventListener('submit', formSubmit);
-$submit.addEventListener('submit', switchView);
 
 var $title = document.getElementById('title');
 var $notes = document.getElementById('notes');
 
 // View Swap
 
-// Submission
-
 function switchView(dataView) {
+  data.view = dataView;
 
   if (dataView === 'entry-form') {
     $view[1].classList.add('hidden');
@@ -69,7 +68,7 @@ $submit.addEventListener('submit', function (event) {
 });
 
 // DOM TREE
-// domcontent should be separate
+
 function newEntry(entry) {
   var $list = document.createElement('li');
 
@@ -118,4 +117,6 @@ function renderList() {
 
 document.addEventListener('DOMContentLoaded', function () {
   renderList();
+  var dataView = data.view;
+  switchView(dataView);
 });
