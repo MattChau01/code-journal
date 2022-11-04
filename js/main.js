@@ -70,6 +70,9 @@ function newEntry(entry) {
 
   var $div0 = document.createElement('div');
   $div0.setAttribute('class', 'row');
+  $div0.addEventListener('click', function () {
+    event.target.closest('.row');
+  });
   $list.appendChild($div0);
 
   var $div1 = document.createElement('div');
@@ -122,4 +125,14 @@ document.addEventListener('DOMContentLoaded', function () {
   renderList();
   var dataView = data.view;
   switchView(dataView);
+});
+
+var $submitListener = document.querySelector('.button1');
+$submitListener.addEventListener('click', function () {
+  'clicked';
+});
+
+var $pencilListener = document.querySelector('pencil-style');
+$pencilListener.addEventListener('click', function () {
+  'clicked';
 });
