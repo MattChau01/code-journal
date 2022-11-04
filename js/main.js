@@ -26,7 +26,7 @@ function formSubmit(event) {
   data.entries.unshift(object);
   var $tree = document.querySelector('.no-bullets');
   $tree.prepend(newEntry(data.entries[0]));
-  switchView();
+  switchView(data.view);
 }
 
 var $submit = document.getElementById('submitForm');
