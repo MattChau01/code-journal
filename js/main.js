@@ -35,8 +35,6 @@ $submit.addEventListener('submit', formSubmit);
 var $title = document.getElementById('title');
 var $notes = document.getElementById('notes');
 
-// View Swap
-
 function switchView(dataView) {
   data.view = dataView;
 
@@ -66,8 +64,6 @@ $newButton.addEventListener('click', function (event) {
 $submit.addEventListener('submit', function (event) {
   switchView(event.target.getAttribute('data-view'));
 });
-
-// DOM TREE
 
 function newEntry(entry) {
   var $list = document.createElement('li');
