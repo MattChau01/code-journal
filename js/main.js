@@ -99,6 +99,13 @@ function newEntry(entry) {
   $entryBody.textContent = entry.submitNotes;
   $div3.appendChild($entryBody);
 
+  var $div4 = document.createElement('div');
+  $div0.appendChild($div4);
+
+  var $pencil = document.createElement('i');
+  $pencil.setAttribute('class', 'fa-solid fa-pencil');
+  $pencil.classList.add('pencil-style');
+  $div4.appendChild($pencil);
   return $list;
 
 }

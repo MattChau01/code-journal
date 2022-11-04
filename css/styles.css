@@ -125,6 +125,11 @@ input:focus {
   .button1 {
     margin-right: 125px;
   }
+
+  .pencil-style {
+    position: absolute;
+    left: 80%;
+  }
 }
 
 ul.no-bullets {
@@ -184,4 +189,10 @@ li {
   margin-top: 15px;
   font-size: 15px;
   font-weight: 500;
+}
+
+.pencil-style {
+  margin-left: 100px;
+  padding: 20px;
+  cursor: pointer;
 }
