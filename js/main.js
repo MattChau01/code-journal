@@ -70,9 +70,6 @@ function newEntry(entry) {
 
   var $div0 = document.createElement('div');
   $div0.setAttribute('class', 'row');
-  $div0.addEventListener('click', function () {
-    event.target.closest('.row');
-  });
   $list.appendChild($div0);
 
   var $div1 = document.createElement('div');
@@ -109,6 +106,9 @@ function newEntry(entry) {
   $pencil.setAttribute('class', 'fa-solid fa-pencil');
   $pencil.classList.add('pencil-style');
   $div4.appendChild($pencil);
+  $pencil.addEventListener('click', function () {
+    switchView('entry-form');
+  });
   return $list;
 
 }
@@ -127,12 +127,9 @@ document.addEventListener('DOMContentLoaded', function () {
   switchView(dataView);
 });
 
-var $submitListener = document.querySelector('.button1');
-$submitListener.addEventListener('click', function () {
-  'clicked';
-});
+// Feature 3 notes
 
-var $pencilListener = document.querySelector('pencil-style');
-$pencilListener.addEventListener('click', function () {
-  'clicked';
+var $parentUl = document.querySelector('.no-bullets');
+$parentUl.addEventListener('click', function () {
+  (event.target.closest('.no-bullets'));
 });
