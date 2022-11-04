@@ -24,6 +24,8 @@ function formSubmit(event) {
   $img.setAttribute('src', $input.value);
   $submit.reset();
   data.entries.unshift(object);
+  var $tree = document.querySelector('.no-bullets');
+  $tree.prepend(newEntry(data.entries[0]));
 }
 
 var $submit = document.getElementById('submitForm');
@@ -46,6 +48,8 @@ function switchView(dataView) {
     $view[0].classList.add('hidden');
     $view[1].classList.remove('hidden');
   }
+  $submit.reset();
+
 }
 
 var $view = document.querySelectorAll('.view');
@@ -60,55 +64,58 @@ $newButton.addEventListener('click', function (event) {
   switchView(event.target.getAttribute('data-view'));
 });
 
-var $entries = document.querySelector('.button1');
-$entries.addEventListener('submit', switchView);
+$submit.addEventListener('submit', function (event) {
+  switchView(event.target.getAttribute('data-view'));
+});
 
 // DOM TREE
+// domcontent should be separate
+function newEntry(entry) {
+  var $list = document.createElement('li');
 
-document.addEventListener('DOMContentLoaded', function () {
+  var $div0 = document.createElement('div');
+  $div0.setAttribute('class', 'row');
+  $list.appendChild($div0);
 
-  function newEntry(entries) {
-    var $list = document.createElement('li');
+  var $div1 = document.createElement('div');
+  $div0.appendChild($div1);
 
-    var $div0 = document.createElement('div');
-    $div0.setAttribute('class', 'row');
-    $list.appendChild($div0);
+  var $div2 = document.createElement('div');
+  $div2.setAttribute('class', 'column-half');
+  $div1.appendChild($div2);
 
-    var $div1 = document.createElement('div');
-    $div0.appendChild($div1);
+  var $imgEntry = document.createElement('img');
+  $imgEntry.setAttribute('id', 'photoView');
+  $imgEntry.setAttribute('src', entry.submitUrl);
+  $imgEntry.setAttribute('alt', 'placeholder');
+  $div2.appendChild($imgEntry);
 
-    var $div2 = document.createElement('div');
-    $div2.setAttribute('class', 'column-half');
-    $div1.appendChild($div2);
+  var $div3 = document.createElement('div');
+  $div3.setAttribute('class', 'column-half');
+  $div0.appendChild($div3);
 
-    var $imgEntry = document.createElement('img');
-    $imgEntry.setAttribute('id', 'photoView');
-    $imgEntry.setAttribute('src', data.entries[i].submitUrl);
-    $imgEntry.setAttribute('alt', 'placeholder');
-    $div2.appendChild($imgEntry);
+  var $entryHeader = document.createElement('h1');
+  $entryHeader.setAttribute('class', 'entry-title');
+  $entryHeader.textContent = entry.submitTitle;
+  $div3.appendChild($entryHeader);
 
-    var $div3 = document.createElement('div');
-    $div3.setAttribute('class', 'column-half');
-    $div0.appendChild($div3);
+  var $entryBody = document.createElement('p');
+  $entryBody.setAttribute('class', 'entry-body');
+  $entryBody.textContent = entry.submitNotes;
+  $div3.appendChild($entryBody);
 
-    var $entryHeader = document.createElement('h1');
-    $entryHeader.setAttribute('class', 'entry-title');
-    $entryHeader.textContent = data.entries[i].submitTitle;
-    $div3.appendChild($entryHeader);
+  return $list;
 
-    var $entryBody = document.createElement('p');
-    $entryBody.setAttribute('class', 'entry-body');
-    $entryBody.textContent = data.entries[i].submitNotes;
-    $div3.appendChild($entryBody);
+}
 
-    return $list;
-
-  }
-
+function renderList() {
   var $tree = document.querySelector('.no-bullets');
   for (var i = 0; i < data.entries.length; i++) {
     var addEntry = newEntry(data.entries[i]);
     $tree.appendChild(addEntry);
   }
+}
 
+document.addEventListener('DOMContentLoaded', function () {
+  renderList();
 });
