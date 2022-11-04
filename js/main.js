@@ -28,7 +28,7 @@ function formSubmit(event) {
 
 var $submit = document.getElementById('submitForm');
 $submit.addEventListener('submit', formSubmit);
-$submit.addEventListener('submit', switchToEntries);
+$submit.addEventListener('submit', switchView);
 
 var $title = document.getElementById('title');
 var $notes = document.getElementById('notes');
@@ -37,53 +37,31 @@ var $notes = document.getElementById('notes');
 
 // Submission
 
-function switchToEntries(event) {
+function switchView(dataView) {
 
-  for (var j = 0; j < $tab.length; j++) {
-    if ($tab[j].getAttribute('data-view') === 'entry-form') {
-      $tab[j].classList.add('hidden');
-    } else if ($tab[j].getAttribute('data-view') === 'entries') {
-      $tab[j].classList.remove('hidden');
-    }
+  if (dataView === 'entry-form') {
+    $view[1].classList.add('hidden');
+    $view[0].classList.remove('hidden');
+  } else if (dataView === 'entries') {
+    $view[0].classList.add('hidden');
+    $view[1].classList.remove('hidden');
   }
 }
+
+var $view = document.querySelectorAll('.view');
+var $entryTab = document.getElementById('entries-tab');
+
+$entryTab.addEventListener('click', function (event) {
+  switchView(event.target.getAttribute('data-view'));
+});
+
+var $newButton = document.getElementById('addNewEntry');
+$newButton.addEventListener('click', function (event) {
+  switchView(event.target.getAttribute('data-view'));
+});
 
 var $entries = document.querySelector('.button1');
-$entries.addEventListener('click', switchToEntries);
-
-var $tab = document.querySelectorAll('.view');
-
-// Tab switch
-
-function navToEntries(event) {
-
-  for (var e = 0; e < $tab.length; e++) {
-    if ($tab[e].getAttribute('data-view') === 'entry-form') {
-      $tab[e].classList.add('hidden');
-    } else if ($tab[e].getAttribute('data-view') === 'entries') {
-      $tab[e].classList.remove('hidden');
-    }
-  }
-}
-
-var $navEntries = document.getElementById('entries-tab');
-$navEntries.addEventListener('click', navToEntries);
-
-// Add another entry
-
-function addAnotherEntry(event) {
-
-  for (var n = 0; n < $tab.length; n++) {
-    if ($tab[n].getAttribute('data-view') === 'entry-form') {
-      $tab[n].classList.remove('hidden');
-    } else if ($tab[n].getAttribute('data-view') === 'entries') {
-      $tab[n].classList.add('hidden');
-    }
-  }
-}
-
-var $addNewEntry = document.getElementById('addNewEntry');
-$addNewEntry.addEventListener('click', addAnotherEntry);
+$entries.addEventListener('submit', switchView);
 
 // DOM TREE
 

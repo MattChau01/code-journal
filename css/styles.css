@@ -144,7 +144,7 @@ ul.no-bullets {
 }
 
 .view {
-  border-width: 1px;
+  font-family: "Proza Libre", sans-serif;
 }
 
 .hidden {
@@ -153,15 +153,18 @@ ul.no-bullets {
 
 .button2 {
   border: none;
+  display: block;
+  text-decoration: none;
   background-color: #562b81;
   border-radius: 5px;
   color: white;
   width: 70px;
-  height: 40px;
+  height: 30px;
   text-align: center;
-  font-size: 17px;
-  margin-top: 15px;
+  font-size: 20px;
+  margin-top: 22px;
   margin-left: 70%;
+  padding-top: 5px;
   cursor: pointer;
 }
 
