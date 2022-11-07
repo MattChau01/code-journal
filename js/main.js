@@ -67,11 +67,11 @@ $submit.addEventListener('submit', function (event) {
 
 function newEntry(entry) {
   var $list = document.createElement('li');
-  $list.setAttribute('class', 'view');
+  $list.setAttribute('class', 'li-class');
+  $list.setAttribute('id', entry.entryId);
 
   var $div0 = document.createElement('div');
   $div0.setAttribute('class', 'row');
-  $div0.setAttribute('id', entry.entryId);
   $list.appendChild($div0);
 
   var $div1 = document.createElement('div');
@@ -104,6 +104,8 @@ function newEntry(entry) {
   var $div4 = document.createElement('div');
   $div0.appendChild($div4);
 
+  // Pencil listener
+
   var $pencil = document.createElement('i');
   $pencil.setAttribute('class', 'fa-solid fa-pencil');
   $pencil.classList.add('pencil-style');
@@ -111,14 +113,23 @@ function newEntry(entry) {
   $pencil.addEventListener('click', function () {
     switchView('entry-form');
   });
+
   $pencil.addEventListener('click', function () {
-    data.editing = $div0.id;
-    $pencil.closest('#parent');
-    // console.log('entryId: ', $div0.id);
+    var entryNumber = event.target.closest('.li-class').getAttribute('id');
+
+    var parsedNumber = parseInt(entryNumber);
+    // console.log(parsedNumber);
+    // console.log(typeof parsedNumber);
+
+    for (var r = 0; r < data.entries.length; r++) {
+      if (parsedNumber === data.entries[r].entryId) {
+        data.editing = data.entries[r];
+      }
+    }
+    // console.log(data.editing);
   });
 
   return $list;
-
 }
 
 function renderList() {
@@ -136,11 +147,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Feature 3 notes
-
 // logs the cloest parent element
 
 var $parentUl = document.querySelector('.no-bullets');
 $parentUl.addEventListener('click', function () {
-  // keep
-  event.target.closest('.no-bullets');
 });
