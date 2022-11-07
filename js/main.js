@@ -116,17 +116,33 @@ function newEntry(entry) {
 
   $pencil.addEventListener('click', function () {
     var entryNumber = event.target.closest('.li-class').getAttribute('id');
-
     var parsedNumber = parseInt(entryNumber);
-    // console.log(parsedNumber);
-    // console.log(typeof parsedNumber);
 
     for (var r = 0; r < data.entries.length; r++) {
       if (parsedNumber === data.entries[r].entryId) {
         data.editing = data.entries[r];
+        // Prepopulate previous entry
+        // var $prevTitle = document.getElementById('title');
+        // var $prevLink = document.getElementById('url-link');
+        // var $prevNotes = document.getElementById('notes');
+
+        // Working on pre loading entries
+
+        // $prevTitle = data.entries[r].submitTitle;
+
+        // var title = $title.value;
+        // var urlLink = $input.value;
+        // var textNotes = $notes.value;
+        // var object = {
+        //   submitTitle: title,
+        //   submitUrl: urlLink,
+        //   submitNotes: textNotes
+        // var $title = document.getElementById('title');
+        // var $notes = document.getElementById('notes');
+
       }
     }
-    // console.log(data.editing);
+
   });
 
   return $list;
