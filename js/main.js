@@ -14,11 +14,21 @@ function formSubmit(event) {
   var title = $title.value;
   var urlLink = $input.value;
   var textNotes = $notes.value;
-  var object = {
-    submitTitle: title,
-    submitUrl: urlLink,
-    submitNotes: textNotes
-  };
+
+  for (var j = 0; j < data.entries.length; j++) {
+    if (data.editing === null) {
+      var object = {
+        submitTitle: title,
+        submitUrl: urlLink,
+        submitNotes: textNotes
+      };
+    } else if (data.editing !== null) {
+      $title.value = data.entries[j].submitTitle;
+      $input.value = data.entries[j].submitUrl;
+      $notes.value = data.entries[j].submitNotes;
+    }
+  }
+
   object.entryId = (data.nextEntryId);
   data.nextEntryId++;
   $img.setAttribute('src', $input.value);
@@ -27,6 +37,7 @@ function formSubmit(event) {
   var $tree = document.querySelector('.no-bullets');
   $tree.prepend(newEntry(data.entries[0]));
   switchView('entries');
+
 }
 
 var $submit = document.getElementById('submitForm');
@@ -129,7 +140,7 @@ function newEntry(entry) {
       if (parsedNumber === data.entries[r].entryId) {
         data.editing = data.entries[r];
 
-        // Working on pre loading entries
+        // Pre load entries
 
         $prevTitle.value = data.entries[r].submitTitle;
         $prevLink.value = data.entries[r].submitUrl;
@@ -137,7 +148,8 @@ function newEntry(entry) {
         $updateImg.src = $prevLink.value;
       }
     }
-
+    // TEST
+    data.editing = null;
   });
 
   return $list;
@@ -157,8 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
   switchView(dataView);
 });
 
-// Feature 3 notes
-// logs the cloest parent element
+// Feature 3 notes - logs the cloest parent element
 
 var $parentUl = document.querySelector('.no-bullets');
 $parentUl.addEventListener('click', function () {
