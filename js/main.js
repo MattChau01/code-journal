@@ -118,28 +118,23 @@ function newEntry(entry) {
     var entryNumber = event.target.closest('.li-class').getAttribute('id');
     var parsedNumber = parseInt(entryNumber);
 
+    // Prepopulate previous entry
+    var $prevTitle = document.getElementById('title');
+    var $prevLink = document.getElementById('url-link');
+    var $updateImg = document.getElementById('photo');
+
+    var $prevNotes = document.getElementById('notes');
+
     for (var r = 0; r < data.entries.length; r++) {
       if (parsedNumber === data.entries[r].entryId) {
         data.editing = data.entries[r];
-        // Prepopulate previous entry
-        // var $prevTitle = document.getElementById('title');
-        // var $prevLink = document.getElementById('url-link');
-        // var $prevNotes = document.getElementById('notes');
 
         // Working on pre loading entries
 
-        // $prevTitle = data.entries[r].submitTitle;
-
-        // var title = $title.value;
-        // var urlLink = $input.value;
-        // var textNotes = $notes.value;
-        // var object = {
-        //   submitTitle: title,
-        //   submitUrl: urlLink,
-        //   submitNotes: textNotes
-        // var $title = document.getElementById('title');
-        // var $notes = document.getElementById('notes');
-
+        $prevTitle.value = data.entries[r].submitTitle;
+        $prevLink.value = data.entries[r].submitUrl;
+        $prevNotes.value = data.entries[r].submitNotes;
+        $updateImg.src = $prevLink.value;
       }
     }
 
