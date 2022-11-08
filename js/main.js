@@ -121,8 +121,6 @@ function newEntry(entry) {
   var $div4 = document.createElement('div');
   $div0.appendChild($div4);
 
-  // Pencil listener
-
   var $pencil = document.createElement('i');
   $pencil.setAttribute('class', 'fa-solid fa-pencil');
   $pencil.classList.add('pencil-style');
@@ -135,7 +133,6 @@ function newEntry(entry) {
     var entryNumber = event.target.closest('.li-class').getAttribute('id');
     var parsedNumber = parseInt(entryNumber);
 
-    // Prepopulate previous entry
     var $prevTitle = document.getElementById('title');
     var $prevLink = document.getElementById('url-link');
     var $updateImg = document.getElementById('photo');
@@ -145,8 +142,6 @@ function newEntry(entry) {
     for (var r = 0; r < data.entries.length; r++) {
       if (parsedNumber === data.entries[r].entryId) {
         data.editing = data.entries[r];
-
-        // Pre load entries
 
         $prevTitle.value = data.entries[r].submitTitle;
         $prevLink.value = data.entries[r].submitUrl;
@@ -172,8 +167,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var dataView = data.view;
   switchView(dataView);
 });
-
-// Feature 3 notes - logs the cloest parent element
 
 var $parentUl = document.querySelector('.no-bullets');
 $parentUl.addEventListener('click', function () {
