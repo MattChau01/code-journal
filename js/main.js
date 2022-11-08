@@ -11,33 +11,39 @@ var $img = document.getElementById('photo');
 function formSubmit(event) {
   event.preventDefault();
 
-  var title = $title.value;
-  var urlLink = $input.value;
-  var textNotes = $notes.value;
+  var $liParent = document.querySelectorAll('li');
 
-  for (var j = 0; j < data.entries.length; j++) {
-    if (data.editing === null) {
-      var object = {
-        submitTitle: title,
-        submitUrl: urlLink,
-        submitNotes: textNotes
-      };
-    } else if (data.editing !== null) {
-      $title.value = data.entries[j].submitTitle;
-      $input.value = data.entries[j].submitUrl;
-      $notes.value = data.entries[j].submitNotes;
+  if (data.editing === null) {
+    var title = $title.value;
+    var urlLink = $input.value;
+    var textNotes = $notes.value;
+
+    var object = {
+      submitTitle: title,
+      submitUrl: urlLink,
+      submitNotes: textNotes
+
+    };
+    object.entryId = (data.nextEntryId);
+    data.nextEntryId++;
+    $img.setAttribute('src', $input.value);
+    $submit.reset();
+    data.entries.unshift(object);
+    var $tree = document.querySelector('.no-bullets');
+    $tree.prepend(newEntry(data.entries[0]));
+  } else {
+
+    for (var j = 0; j < data.entries.length; j++) {
+      if (Number(data.editing.entryId) === Number(data.entries[j].entryId)) {
+        data.entries[j].submitTitle = $title.value;
+        data.entries[j].submitUrl = $input.value;
+        data.entries[j].submitNotes = $notes.value;
+        $liParent[j].replaceWith(newEntry(data.entries[j]));
+      }
     }
+    data.editing = null;
+    switchView('entries');
   }
-
-  object.entryId = (data.nextEntryId);
-  data.nextEntryId++;
-  $img.setAttribute('src', $input.value);
-  $submit.reset();
-  data.entries.unshift(object);
-  var $tree = document.querySelector('.no-bullets');
-  $tree.prepend(newEntry(data.entries[0]));
-  switchView('entries');
-
 }
 
 var $submit = document.getElementById('submitForm');
@@ -148,8 +154,6 @@ function newEntry(entry) {
         $updateImg.src = $prevLink.value;
       }
     }
-    // TEST
-    data.editing = null;
   });
 
   return $list;
