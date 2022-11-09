@@ -164,7 +164,7 @@ ul.no-bullets {
   cursor: pointer;
 }
 
-p {
+.p-entry {
   width: 400px;
 }
 
@@ -185,4 +185,8 @@ li {
   margin-left: 100px;
   padding: 20px;
   cursor: pointer;
+}
+
+.p-delete {
+  font-family: "Proza Libre", sans-serif;
 }

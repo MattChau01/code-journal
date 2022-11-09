@@ -115,11 +115,14 @@ function newEntry(entry) {
 
   var $entryBody = document.createElement('p');
   $entryBody.setAttribute('class', 'entry-body');
+  $entryBody.setAttribute('class', 'p-entry');
   $entryBody.textContent = entry.submitNotes;
   $div3.appendChild($entryBody);
 
   var $div4 = document.createElement('div');
   $div0.appendChild($div4);
+
+  // Pencil listener
 
   var $pencil = document.createElement('i');
   $pencil.setAttribute('class', 'fa-solid fa-pencil');
@@ -133,6 +136,7 @@ function newEntry(entry) {
     var entryNumber = event.target.closest('.li-class').getAttribute('id');
     var parsedNumber = parseInt(entryNumber);
 
+    // Prepopulate previous entry
     var $prevTitle = document.getElementById('title');
     var $prevLink = document.getElementById('url-link');
     var $updateImg = document.getElementById('photo');
@@ -143,6 +147,8 @@ function newEntry(entry) {
       if (parsedNumber === data.entries[r].entryId) {
         data.editing = data.entries[r];
 
+        // Pre load entries
+
         $prevTitle.value = data.entries[r].submitTitle;
         $prevLink.value = data.entries[r].submitUrl;
         $prevNotes.value = data.entries[r].submitNotes;
@@ -150,6 +156,18 @@ function newEntry(entry) {
       }
     }
   });
+
+  // Feature 4
+
+  $pencil.addEventListener('click', addDelete);
+
+  function addDelete(event) {
+    // parent in html
+    // var divColEight = document.querySelector('.column-eigth');
+
+    // var $deleteButton = document.createElement('p');
+
+  }
 
   return $list;
 }
@@ -167,6 +185,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var dataView = data.view;
   switchView(dataView);
 });
+
+// Feature 3 notes - logs the cloest parent element
 
 var $parentUl = document.querySelector('.no-bullets');
 $parentUl.addEventListener('click', function () {
