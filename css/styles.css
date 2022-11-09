@@ -125,6 +125,11 @@ input:focus {
   .button1 {
     margin-right: 125px;
   }
+
+  .pencil-style {
+    position: absolute;
+    left: 80%;
+  }
 }
 
 ul.no-bullets {
@@ -133,17 +138,7 @@ ul.no-bullets {
   padding: 0;
 }
 
-.entry-body {
-  margin: 10px;
-  font-size: 20px;
-}
-
-.entry-title {
-  font-weight: 600;
-  font-size: 25px;
-  margin-left: 10px;
-}
-
+.li-class,
 .view {
   font-family: "Proza Libre", sans-serif;
 }
@@ -184,4 +179,10 @@ li {
   margin-top: 15px;
   font-size: 15px;
   font-weight: 500;
+}
+
+.pencil-style {
+  margin-left: 100px;
+  padding: 20px;
+  cursor: pointer;
 }

@@ -11,22 +11,39 @@ var $img = document.getElementById('photo');
 function formSubmit(event) {
   event.preventDefault();
 
-  var title = $title.value;
-  var urlLink = $input.value;
-  var textNotes = $notes.value;
-  var object = {
-    submitTitle: title,
-    submitUrl: urlLink,
-    submitNotes: textNotes
-  };
-  object.entryId = (data.nextEntryId);
-  data.nextEntryId++;
-  $img.setAttribute('src', $input.value);
-  $submit.reset();
-  data.entries.unshift(object);
-  var $tree = document.querySelector('.no-bullets');
-  $tree.prepend(newEntry(data.entries[0]));
-  switchView('entries');
+  var $liParent = document.querySelectorAll('li');
+
+  if (data.editing === null) {
+    var title = $title.value;
+    var urlLink = $input.value;
+    var textNotes = $notes.value;
+
+    var object = {
+      submitTitle: title,
+      submitUrl: urlLink,
+      submitNotes: textNotes
+
+    };
+    object.entryId = (data.nextEntryId);
+    data.nextEntryId++;
+    $img.setAttribute('src', $input.value);
+    $submit.reset();
+    data.entries.unshift(object);
+    var $tree = document.querySelector('.no-bullets');
+    $tree.prepend(newEntry(data.entries[0]));
+  } else {
+
+    for (var j = 0; j < data.entries.length; j++) {
+      if (Number(data.editing.entryId) === Number(data.entries[j].entryId)) {
+        data.entries[j].submitTitle = $title.value;
+        data.entries[j].submitUrl = $input.value;
+        data.entries[j].submitNotes = $notes.value;
+        $liParent[j].replaceWith(newEntry(data.entries[j]));
+      }
+    }
+    data.editing = null;
+    switchView('entries');
+  }
 }
 
 var $submit = document.getElementById('submitForm');
@@ -67,6 +84,8 @@ $submit.addEventListener('submit', function (event) {
 
 function newEntry(entry) {
   var $list = document.createElement('li');
+  $list.setAttribute('class', 'li-class');
+  $list.setAttribute('id', entry.entryId);
 
   var $div0 = document.createElement('div');
   $div0.setAttribute('class', 'row');
@@ -99,8 +118,40 @@ function newEntry(entry) {
   $entryBody.textContent = entry.submitNotes;
   $div3.appendChild($entryBody);
 
-  return $list;
+  var $div4 = document.createElement('div');
+  $div0.appendChild($div4);
 
+  var $pencil = document.createElement('i');
+  $pencil.setAttribute('class', 'fa-solid fa-pencil');
+  $pencil.classList.add('pencil-style');
+  $div4.appendChild($pencil);
+  $pencil.addEventListener('click', function () {
+    switchView('entry-form');
+  });
+
+  $pencil.addEventListener('click', function () {
+    var entryNumber = event.target.closest('.li-class').getAttribute('id');
+    var parsedNumber = parseInt(entryNumber);
+
+    var $prevTitle = document.getElementById('title');
+    var $prevLink = document.getElementById('url-link');
+    var $updateImg = document.getElementById('photo');
+
+    var $prevNotes = document.getElementById('notes');
+
+    for (var r = 0; r < data.entries.length; r++) {
+      if (parsedNumber === data.entries[r].entryId) {
+        data.editing = data.entries[r];
+
+        $prevTitle.value = data.entries[r].submitTitle;
+        $prevLink.value = data.entries[r].submitUrl;
+        $prevNotes.value = data.entries[r].submitNotes;
+        $updateImg.src = $prevLink.value;
+      }
+    }
+  });
+
+  return $list;
 }
 
 function renderList() {
@@ -115,4 +166,8 @@ document.addEventListener('DOMContentLoaded', function () {
   renderList();
   var dataView = data.view;
   switchView(dataView);
+});
+
+var $parentUl = document.querySelector('.no-bullets');
+$parentUl.addEventListener('click', function () {
 });
