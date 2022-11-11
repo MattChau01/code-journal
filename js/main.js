@@ -194,3 +194,28 @@ document.addEventListener('DOMContentLoaded', function () {
 var $parentUl = document.querySelector('.no-bullets');
 $parentUl.addEventListener('click', function () {
 });
+
+// Modal feature
+
+var $overlay = document.querySelector('.background');
+var $deleteEntry = document.querySelector('.delete-button');
+$deleteEntry.addEventListener('click', deleteEntry);
+
+function deleteEntry(event) {
+  $overlay.classList.remove('hidden');
+
+}
+
+var $cancel = document.querySelector('.cancel-button');
+$cancel.addEventListener('click', closeModal);
+
+function closeModal(event) {
+  $overlay.classList.add('hidden');
+}
+
+var $confirm = document.querySelector('.confirm-button');
+$confirm.addEventListener('click', confirm);
+
+function confirm(event) {
+
+}
