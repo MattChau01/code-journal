@@ -68,8 +68,10 @@ function switchView(dataView) {
 
 var $view = document.querySelectorAll('.view');
 var $entryTab = document.getElementById('entries-tab');
+var $deleteButton = document.getElementById('delete');
 
 $entryTab.addEventListener('click', function (event) {
+  $deleteButton.classList.add('hidden');
   switchView(event.target.getAttribute('data-view'));
 });
 
@@ -79,6 +81,7 @@ $newButton.addEventListener('click', function (event) {
 });
 
 $submit.addEventListener('submit', function (event) {
+  $deleteButton.classList.add('hidden');
   switchView(event.target.getAttribute('data-view'));
 });
 
@@ -160,12 +163,12 @@ function newEntry(entry) {
   // Feature 4
 
   $pencil.addEventListener('click', addDelete);
+  var $deleteButton = document.getElementById('delete');
 
   function addDelete(event) {
     // parent in html
-    // var divColEight = document.querySelector('.column-eigth');
 
-    // var $deleteButton = document.createElement('p');
+    $deleteButton.classList.remove('hidden');
 
   }
 

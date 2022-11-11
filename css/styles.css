@@ -69,8 +69,8 @@ h2 {
 }
 
 .button1 {
+  margin-left: 50%;
   margin-top: 15px;
-  margin-right: 100px;
   margin-bottom: 45px;
   background-color: #562b81;
   border-radius: 5px;
@@ -84,7 +84,7 @@ h2 {
 }
 
 .right {
-  justify-content: right;
+  margin-left: 57%;
 }
 
 .entry-width {
@@ -129,6 +129,10 @@ input:focus {
   .pencil-style {
     position: absolute;
     left: 80%;
+  }
+
+  .right {
+    margin-left: 67%;
   }
 }
 
@@ -187,6 +191,20 @@ li {
   cursor: pointer;
 }
 
-.p-delete {
-  font-family: "Proza Libre", sans-serif;
+.delete-button {
+  font-size: 15px;
+  margin-top: 25px;
+  margin-right: 100px;
+  margin-left: 10px;
+  margin-bottom: 45px;
+  background: none;
+  border: none;
+  color: red;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.delete-absolute {
+  position: absolute;
+  left: 0;
 }
