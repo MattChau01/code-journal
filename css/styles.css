@@ -5,24 +5,16 @@
 
 .container {
   background-color: #562b81;
-  margin-left: 0;
-  padding: 0;
   width: 100%;
 }
 
 .background {
-  /* min-height: 100vh; */
-
-  /* justify-content: center;
-  align-items: center; */
   background-color: rgb(0 0 0 / 70%);
   position: fixed;
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
-
-  /* z-index: 20; */
 }
 
 .modal {
@@ -71,6 +63,7 @@ img {
 
 header {
   height: 50px;
+  width: 100%;
 }
 
 h2 {
@@ -136,6 +129,10 @@ input:focus {
 }
 
 @media screen and (min-width: 700px) {
+  .container {
+    width: 100%;
+  }
+
   .column-full {
     width: 100%;
   }
@@ -287,4 +284,8 @@ li {
   background-color: #dc2a2a;
   color: white;
   cursor: pointer;
+}
+
+.full-width {
+  width: 100%;
 }

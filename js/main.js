@@ -204,7 +204,6 @@ $deleteEntry.addEventListener('click', deleteEntry);
 function deleteEntry(event) {
   event.preventDefault();
   $overlay.classList.remove('hidden');
-
 }
 
 var $cancel = document.querySelector('.cancel-button');
@@ -218,5 +217,19 @@ var $confirm = document.querySelector('.confirm-button');
 $confirm.addEventListener('click', confirm);
 
 function confirm(event) {
+  var $list0 = document.querySelectorAll('.li-class');
+  for (var p = 0; p < data.entries.length; p++) {
+    if (data.editing.entryId === data.entries[p].entryId) {
+      data.entries.splice(p, 1);
+    }
+  }
 
+  for (var u = 0; u < $list0.length; u++) {
+    var $entryId = $list0[u].getAttribute('id');
+    if (parseInt($entryId) === data.editing.entryId) {
+      $list0[u].remove();
+    }
+  }
+  $overlay.classList.add('hidden');
+  switchView('entries');
 }
