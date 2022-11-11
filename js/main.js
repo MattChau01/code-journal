@@ -202,6 +202,7 @@ var $deleteEntry = document.querySelector('.delete-button');
 $deleteEntry.addEventListener('click', deleteEntry);
 
 function deleteEntry(event) {
+  event.preventDefault();
   $overlay.classList.remove('hidden');
 
 }
