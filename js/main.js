@@ -68,8 +68,10 @@ function switchView(dataView) {
 
 var $view = document.querySelectorAll('.view');
 var $entryTab = document.getElementById('entries-tab');
+var $deleteButton = document.getElementById('delete');
 
 $entryTab.addEventListener('click', function (event) {
+  $deleteButton.classList.add('hidden');
   switchView(event.target.getAttribute('data-view'));
 });
 
@@ -79,6 +81,7 @@ $newButton.addEventListener('click', function (event) {
 });
 
 $submit.addEventListener('submit', function (event) {
+  $deleteButton.classList.add('hidden');
   switchView(event.target.getAttribute('data-view'));
 });
 
@@ -115,11 +118,14 @@ function newEntry(entry) {
 
   var $entryBody = document.createElement('p');
   $entryBody.setAttribute('class', 'entry-body');
+  $entryBody.setAttribute('class', 'p-entry');
   $entryBody.textContent = entry.submitNotes;
   $div3.appendChild($entryBody);
 
   var $div4 = document.createElement('div');
   $div0.appendChild($div4);
+
+  // Pencil listener
 
   var $pencil = document.createElement('i');
   $pencil.setAttribute('class', 'fa-solid fa-pencil');
@@ -133,6 +139,7 @@ function newEntry(entry) {
     var entryNumber = event.target.closest('.li-class').getAttribute('id');
     var parsedNumber = parseInt(entryNumber);
 
+    // Prepopulate previous entry
     var $prevTitle = document.getElementById('title');
     var $prevLink = document.getElementById('url-link');
     var $updateImg = document.getElementById('photo');
@@ -143,6 +150,8 @@ function newEntry(entry) {
       if (parsedNumber === data.entries[r].entryId) {
         data.editing = data.entries[r];
 
+        // Pre load entries
+
         $prevTitle.value = data.entries[r].submitTitle;
         $prevLink.value = data.entries[r].submitUrl;
         $prevNotes.value = data.entries[r].submitNotes;
@@ -150,6 +159,18 @@ function newEntry(entry) {
       }
     }
   });
+
+  // Feature 4
+
+  $pencil.addEventListener('click', addDelete);
+  var $deleteButton = document.getElementById('delete');
+
+  function addDelete(event) {
+    // parent in html
+
+    $deleteButton.classList.remove('hidden');
+
+  }
 
   return $list;
 }
@@ -168,6 +189,47 @@ document.addEventListener('DOMContentLoaded', function () {
   switchView(dataView);
 });
 
+// Feature 3 notes - logs the cloest parent element
+
 var $parentUl = document.querySelector('.no-bullets');
 $parentUl.addEventListener('click', function () {
 });
+
+// Modal feature
+
+var $overlay = document.querySelector('.background');
+var $deleteEntry = document.querySelector('.delete-button');
+$deleteEntry.addEventListener('click', deleteEntry);
+
+function deleteEntry(event) {
+  event.preventDefault();
+  $overlay.classList.remove('hidden');
+}
+
+var $cancel = document.querySelector('.cancel-button');
+$cancel.addEventListener('click', closeModal);
+
+function closeModal(event) {
+  $overlay.classList.add('hidden');
+}
+
+var $confirm = document.querySelector('.confirm-button');
+$confirm.addEventListener('click', confirm);
+
+function confirm(event) {
+  var $list0 = document.querySelectorAll('.li-class');
+  for (var p = 0; p < data.entries.length; p++) {
+    if (data.editing.entryId === data.entries[p].entryId) {
+      data.entries.splice(p, 1);
+    }
+  }
+
+  for (var u = 0; u < $list0.length; u++) {
+    var $entryId = $list0[u].getAttribute('id');
+    if (parseInt($entryId) === data.editing.entryId) {
+      $list0[u].remove();
+    }
+  }
+  $overlay.classList.add('hidden');
+  switchView('entries');
+}

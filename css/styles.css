@@ -5,8 +5,25 @@
 
 .container {
   background-color: #562b81;
-  margin-left: 0;
-  padding: 0;
+  width: 100%;
+}
+
+.background {
+  background-color: rgb(0 0 0 / 70%);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  background-color: white;
+  width: 425px;
+  height: 175px;
+  position: absolute;
+  left: 6%;
+  top: 25%;
 }
 
 .container-two {
@@ -14,6 +31,7 @@
   margin-left: 0;
   margin-bottom: 0;
   height: 100%;
+  width: 100%;
 }
 
 .column-fourth {
@@ -45,6 +63,7 @@ img {
 
 header {
   height: 50px;
+  width: 100%;
 }
 
 h2 {
@@ -69,8 +88,8 @@ h2 {
 }
 
 .button1 {
+  margin-left: 50%;
   margin-top: 15px;
-  margin-right: 100px;
   margin-bottom: 45px;
   background-color: #562b81;
   border-radius: 5px;
@@ -84,7 +103,7 @@ h2 {
 }
 
 .right {
-  justify-content: right;
+  margin-left: 57%;
 }
 
 .entry-width {
@@ -110,6 +129,10 @@ input:focus {
 }
 
 @media screen and (min-width: 700px) {
+  .container {
+    width: 100%;
+  }
+
   .column-full {
     width: 100%;
   }
@@ -129,6 +152,29 @@ input:focus {
   .pencil-style {
     position: absolute;
     left: 80%;
+  }
+
+  .right {
+    margin-left: 67%;
+  }
+
+  .modal {
+    background-color: white;
+    width: 500px;
+    height: 200px;
+    position: absolute;
+    left: 23%;
+    top: 30%;
+  }
+
+  .container-modal {
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0 0 0 / 70%);
+    position: relative;
+    top: 0;
+    z-index: 20;
   }
 }
 
@@ -164,7 +210,7 @@ ul.no-bullets {
   cursor: pointer;
 }
 
-p {
+.p-entry {
   width: 400px;
 }
 
@@ -185,4 +231,61 @@ li {
   margin-left: 100px;
   padding: 20px;
   cursor: pointer;
+}
+
+.delete-button {
+  font-size: 15px;
+  margin-top: 25px;
+  margin-right: 100px;
+  margin-left: 10px;
+  margin-bottom: 45px;
+  background: none;
+  border: none;
+  color: red;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.delete-absolute {
+  position: absolute;
+  left: 0;
+}
+
+.modal-content {
+  color: black;
+  text-align: center;
+  margin-top: 5%;
+}
+
+.centered {
+  text-align: center;
+}
+
+.cancel-button {
+  padding: 10px;
+  width: 100px;
+  margin-left: 12%;
+  margin-top: 25%;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #b6b6b6;
+  cursor: pointer;
+}
+
+.confirm-button {
+  padding: 10px;
+  width: 118px;
+  margin-left: 40%;
+  margin-top: 25%;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #dc2a2a;
+  color: white;
+  cursor: pointer;
+}
+
+.full-width {
+  width: 100%;
 }
